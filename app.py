@@ -14,10 +14,6 @@ mp_hands = mp.solutions.hands
 hands = mp_hands.Hands(static_image_mode=False, max_num_hands=2, min_detection_confidence=0.7)
 mp_drawing = mp.solutions.drawing_utils
 
-# TTS engine
-engine = pyttsx3.init()
-last_prediction = None
-
 # Start webcam
 cap = cv2.VideoCapture(0)
 
@@ -47,11 +43,6 @@ while cap.isOpened():
 
             cv2.putText(frame, f"Sign: {class_name}", (10, 40),
                         cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
-
-            if last_prediction != class_name:
-                engine.say(class_name)
-                engine.runAndWait()
-                last_prediction = class_name
 
     else:
         cv2.putText(frame, "Show both hands clearly", (10, 40),
