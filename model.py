@@ -37,7 +37,7 @@ model = Sequential([
 model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
 # Train model
-model.fit(X_train, y_train, epochs=30, batch_size=32, validation_split=0.2)
+model.fit(X_train, y_train, epochs=50, batch_size=32, validation_split=0.2)
 
 # Save model
 model.save("twohand_model.h5")
